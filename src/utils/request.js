@@ -14,7 +14,7 @@ service.interceptors.response.use(response => {
     if (success) {
         return data
     } else {
-        Message.error(error) //提示错误信息
+        Message.error(message) //提示错误信息
         return Promise.reject(new Error(message))
     }
 }, error => {
