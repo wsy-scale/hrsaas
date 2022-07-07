@@ -8,13 +8,16 @@ const whiteList = ['/login', '/404'] //自定义白名单  所有不授权控制
     //next为必须执行的钩子函数  to代表“到哪”，from代表“从哪里来”，
     //next()通行，next(false)跳转终止，next(地址)跳转到某个地址
     //路由前置守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
         nprogress.start() //开启进度条
         if (store.getters.token) {
             if (to.path === '/login') {
                 //如果访问的是登录页
                 next('/') //跳转主页
             } else {
+                if (!store.getters.userId) {
+                    await store.dispatch('user/getUserInfo')
+                }
                 next() //直接放行
             }
         } else {

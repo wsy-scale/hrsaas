@@ -41,7 +41,7 @@ module.exports = {
         proxy: {
             //当地址中有"/api"时触发代理机制
             "/api": {
-                target: 'http://ihrm-java.itheima.net/', // 跨域请求的地址
+                target: 'http://ihrm.itheima.net/', // 跨域请求的地址
                 changeOrigin: true // 只有这个值为true的情况下 才表示开启跨域
             }
         }
